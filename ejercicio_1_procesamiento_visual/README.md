@@ -1,269 +1,161 @@
-# Ejercicio 1 - Parcial Computación Visual
+# Procesamiento de Imágenes con OpenCV y CustomTkinter
 
-Autor: Álvaro Andrés Romero Castro
+## ¿Qué problema o propósito aborda el ejercicio?
 
-## Descripción General
+El objetivo de este ejercicio es implementar un pipeline básico de procesamiento digital de imágenes que permita visualizar y comparar distintas etapas utilizadas en visión por computador.
 
-Este proyecto implementa una aplicación gráfica para el procesamiento digital de imágenes utilizando Python, OpenCV y CustomTkinter. La aplicación permite cargar una imagen y visualizar distintas etapas de un pipeline de visión por computador, incluyendo conversión de espacios de color, filtrado, detección de bordes y segmentación.
+La aplicación desarrollada permite cargar una imagen y aplicar diferentes técnicas de preprocesamiento, detección de características y segmentación, mostrando los resultados de forma interactiva mediante una interfaz gráfica.
 
-El objetivo es demostrar de manera interactiva conceptos fundamentales de procesamiento de imágenes mediante una interfaz gráfica organizada por pestañas.
-
----
-
-## Funcionalidades Implementadas
-
-La aplicación permite:
-
-* Cargar imágenes en formato PNG, JPG o JPEG.
-* Visualizar la imagen original.
-* Convertir la imagen a escala de grises.
-* Convertir la imagen a espacios de color HSV o LAB.
-* Aplicar filtros de suavizado:
-
-  * Gaussiano.
-  * Mediana.
-* Aplicar detección de bordes:
-
-  * Canny.
-  * Sobel.
-* Realizar segmentación mediante:
-
-  * Umbralización de Otsu.
-  * Umbralización Adaptativa.
-* Guardar automáticamente los resultados generados.
-* Comparar visualmente cada etapa del procesamiento.
+El propósito principal es comprender cómo las transformaciones realizadas sobre una imagen afectan la información visual disponible para tareas posteriores de análisis y reconocimiento.
 
 ---
 
-# Dependencias
+## ¿Qué herramientas, librerías o motores se utilizaron?
 
-El proyecto fue desarrollado utilizando Python 3.14.
+El proyecto fue desarrollado utilizando Python y las siguientes librerías:
 
-Bibliotecas requeridas:
+### OpenCV
 
-```bash
-customtkinter
-tkinterdnd2
-opencv-python
-numpy
-pillow
-```
+Biblioteca principal utilizada para el procesamiento de imágenes:
 
----
+* Conversión entre espacios de color.
+* Aplicación de filtros.
+* Detección de bordes.
+* Segmentación.
+* Lectura y almacenamiento de imágenes.
 
-# Instalación
+### NumPy
 
-1. Clonar el repositorio:
+Utilizada para la manipulación eficiente de matrices y arreglos numéricos empleados por OpenCV.
 
-```bash
-git clone https://github.com/ALVAROCA-0/examen-final-computacion-visual-alvaro-romero.git
-```
+### Pillow (PIL)
 
-2. Ingresar al directorio:
+Utilizada para convertir imágenes entre formatos compatibles con OpenCV y la interfaz gráfica.
 
-```bash
-cd ejercicio_1_procesamiento_visual
-```
+### CustomTkinter
 
-3. Instalar dependencias:
+Framework utilizado para construir la interfaz gráfica moderna de la aplicación.
 
-```bash
-pip install -r requirements.txt
-```
+### TkinterDnD2
+
+Permite la funcionalidad de arrastrar y soltar archivos dentro de la aplicación.
 
 ---
 
-# Ejecución
+## ¿Cómo se ejecuta la solución?
 
-Ejecutar el archivo principal:
+### Instalación de dependencias
+
+```bash
+pip install opencv-python numpy pillow customtkinter tkinterdnd2
+```
+
+### Ejecución
+
+Desde la carpeta raíz del proyecto:
 
 ```bash
 python main.py
 ```
 
-Al iniciar la aplicación aparecerá una interfaz gráfica con cinco pestañas:
+### Uso de la aplicación
 
-1. Cargar Imagen.
-2. Pre-Procesado.
-3. Detección de Bordes.
-4. Segmentación.
-5. Resultados.
-
----
-
-# Estructura del Repositorio
-
-```text
-proyecto-procesamiento-imagenes/
-│
-├── src/
-|   ├── main.py
-|   ├── README.md
-|   ├── requirements.txt
-│
-├── resultados/
-│   ├── gray.png
-│   ├── hsv.png
-│   ├── blur.png
-│   ├── edges.png
-│   └── segmented.png
-│
-└── data/
-    └── ejemplo.jpg
-```
+1. Abrir la aplicación.
+2. Cargar una imagen mediante arrastrar y soltar o utilizando el selector de archivos.
+3. Visualizar la imagen original.
+4. Seleccionar el espacio de color deseado (HSV o LAB).
+5. Seleccionar el método de suavizado (Gaussiano o Mediana).
+6. Seleccionar el detector de bordes (Canny o Sobel).
+7. Seleccionar el método de segmentación (Otsu o Umbralización Adaptativa).
+8. Observar los resultados en cada pestaña.
+9. Revisar las imágenes generadas en la carpeta `results`.
 
 ---
 
-# Evidencias
+## ¿Qué resultados se obtuvieron?
 
-## Pre-Procesado
+La aplicación genera las siguientes salidas:
 
-La aplicación genera:
+### Imagen original
 
-* Conversión a escala de grises.
-* Conversión a HSV o LAB.
+Permite visualizar la entrada sin modificaciones.
 
-![Imagen a gray](./resultados/gray.png)
-![Imagen a HSV](./resultados/hsv.png)
+### Escala de grises
 
----
+Reduce la información de color a una representación de intensidad, facilitando el procesamiento posterior.
 
-## Suavisazado y Detección de Bordes
+### Espacios de color HSV y LAB
 
-Se aplican técnicas de suavizado y posteriormente algoritmos de detección de bordes.
+Permiten observar distintas representaciones cromáticas de una misma imagen y comparar cómo se distribuye la información de color.
 
-Opciones disponibles:
+### Suavizado
 
-* Filtro Gaussiano.
-* Filtro Mediana.
-* Detector Canny.
-* Detector Sobel.
+Los filtros Gaussiano y de Mediana reducen el ruido presente en la imagen antes de aplicar algoritmos de detección de características.
 
-![Suavizado](./resultados/blur.png)
-![Bordes](./resultados/edges.png)
+### Detección de bordes
 
----
+* El método Canny produce contornos definidos y continuos.
+* El método Sobel resalta regiones con cambios bruscos de intensidad mediante gradientes.
 
-## Segmentación
+### Segmentación
 
-La aplicación permite comparar dos métodos clásicos de segmentación:
+* El método de Otsu separa automáticamente regiones de interés utilizando un umbral global.
+* La umbralización adaptativa mejora los resultados en imágenes con iluminación no uniforme.
 
-* Umbralización de Otsu.
-* Umbralización Adaptativa.
+### Almacenamiento de resultados
 
-![Segmentación](./resultados/segmented.png)
+Todas las imágenes procesadas son guardadas automáticamente para facilitar la comparación entre técnicas.
 
 ---
 
-## Resultados Guardados
+## ¿Qué dificultades aparecieron y cómo se resolvieron?
 
-Las imágenes generadas se almacenan automáticamente en la carpeta `results`.
+### Uso de Tkinter y diseño
 
----
+Se dificulto principalmente la creación de la applicación con tkinter. Ya que para que esta tuviera un buen diseño se requirio de manipular varias veces cada uno de los objetos usados. Para facilitar este se le pidio a una IA que generara este diseño y colores para permitir el flujo de imagenes entre cada punto del proceso.
 
-# Análisis Técnico
+### Enlazado del Pipline
 
-## Conversión a Escala de Grises
-
-La imagen original se transforma a una representación monocanal mediante:
-
-```python
-cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-```
-
-Esta etapa reduce la complejidad de la información visual y facilita operaciones posteriores como filtrado, detección de bordes y segmentación.
+Inicialmente se planteo la idea de que con los cambios en el dropdown cambiaran solo las imagenes que se querían pero esto habría requerido de muchos más metodos y callbacks en los dropdown de tkinter, entonces se decidio unir todo el pipeline en un solo método `process_image`, esto se unió a `update_labels` por medio de `on_parameter_change` para que todo se vuelva a ejecutar en el cambio de un dropdown. Esto tiene la desventaja de realentizar toda la aplicación solo con cambiar una imagen.
 
 ---
 
-## Conversión a Espacios de Color
+## ¿Qué prompts de IA se usaron, si aplica?
 
-### HSV
+### Creación del ambiente Tkinter
 
-El espacio HSV separa la información de color de la intensidad luminosa, facilitando tareas de análisis y segmentación basadas en color.
-
-### LAB
-
-El espacio LAB representa los colores de forma más cercana a la percepción humana, separando luminosidad y cromaticidad.
-
-La posibilidad de alternar entre ambos espacios permite observar distintas representaciones de una misma escena.
+Inicié creando las clases de `Image`, `FileDrop` y un inicio de la applicación principal `App`, despues le pedí a la IA que a partir de estas clases (Y las tabs dentro de `App`) organizara los elementos para poder resolver cada uno de los puntos, y que agrupara algunos como escala de grises y HSV/LAB.
 
 ---
 
-## Suavizado
+## ¿Qué partes fueron verificadas manualmente por el estudiante?
 
-Se implementaron dos filtros:
+Se realizaron pruebas manuales para validar el funcionamiento correcto de cada componente de la aplicación.
 
-### Filtro Gaussiano
+### Carga de imágenes
 
-```python
-cv2.GaussianBlur(gray, (5,5), 0)
-```
+Se verificó la carga correcta de archivos PNG, JPG y JPEG mediante selección manual y arrastrar y soltar.
 
-Reduce ruido de alta frecuencia mediante una convolución con una distribución gaussiana.
+### Conversión de espacios de color
 
-### Filtro Mediana
+Se comprobó visualmente que las representaciones HSV y LAB fueran generadas correctamente al cambiar la opción seleccionada.
 
-```python
-cv2.medianBlur(gray, 5)
-```
+### Filtros de suavizado
 
-Sustituye cada píxel por la mediana de sus vecinos, siendo especialmente efectivo contra ruido impulsivo.
+Se verificó que los filtros Gaussiano y de Mediana modificaran la imagen de acuerdo con el comportamiento esperado, reduciendo ruido y suavizando detalles.
 
-Se seleccionó un kernel de tamaño 5×5 por ofrecer un equilibrio adecuado entre suavizado y preservación de detalles.
+### Detección de bordes
 
----
+Se compararon los resultados de Canny y Sobel para confirmar que ambos métodos respondieran a los cambios de intensidad presentes en la imagen.
 
-## Detección de Bordes
+### Segmentación
 
-### Detector Canny
+Se validó que los métodos de Otsu y Umbralización Adaptativa generaran máscaras binarias coherentes con el contenido de la imagen.
 
-```python
-cv2.Canny(blur, 100, 200)
-```
+### Guardado de resultados
 
-Se utilizaron umbrales de 100 y 200 para identificar cambios significativos de intensidad manteniendo una buena relación entre sensibilidad y robustez al ruido.
+Se comprobó la creación automática de la carpeta `results` y el almacenamiento correcto de cada imagen procesada.
 
-### Detector Sobel
+### Interfaz gráfica
 
-```python
-cv2.Sobel(...)
-```
-
-Calcula gradientes horizontales y verticales de intensidad para identificar regiones con cambios abruptos.
-
----
-
-## Segmentación
-
-### Método de Otsu
-
-```python
-cv2.threshold(..., cv2.THRESH_OTSU)
-```
-
-Calcula automáticamente el umbral óptimo a partir del histograma de la imagen.
-
-### Umbralización Adaptativa
-
-```python
-cv2.adaptiveThreshold(...)
-```
-
-Utiliza ventanas locales de 11×11 píxeles y una constante de ajuste de 2 para adaptarse a cambios de iluminación.
-
----
-
-## Justificación de los Parámetros Utilizados
-
-Los parámetros seleccionados corresponden a configuraciones ampliamente utilizadas en aplicaciones académicas y de prototipado:
-
-* Kernel de 5×5 para suavizado.
-* Umbrales 100–200 para Canny.
-* Kernel de tamaño 3 para Sobel.
-* Ventana local 11×11 para umbralización adaptativa.
-
-Estos valores permiten obtener resultados estables en una amplia variedad de imágenes sin necesidad de ajustes específicos para cada caso, facilitando la comparación entre técnicas de procesamiento.
-
-## Uso de IA
-
-Debido al uso extensivo de tkinter se uso a la IA para generar este espació de una forma organizada. También se le pregunto sobre los parámetros a usar para el procesamiento de imagenes.
+Se verificó que los cambios realizados en los menús desplegables actualizaran correctamente los resultados mostrados en pantalla sin necesidad de volver a cargar la imagen.
